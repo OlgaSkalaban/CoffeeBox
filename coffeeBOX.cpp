@@ -10,6 +10,7 @@ void showServiceMenu();
 int passwordVerification();
 double getMoney(double price);
 void makeCoffee();
+void offerSugar();
 
 int main()
 {
@@ -17,13 +18,20 @@ int main()
 	double priceE = 2.50;
 	double priceC = 3.50;
 	double priceL = 3.00;
+	double portionSugarWeight = 5.0;
+	double totalSugar = 1000.0;
+	//int maxCups = 100;
 	
 	while (true) {
 		int startChoice;
 		int coffeeChoice;
 		int serviceChoice;
-				
+		int choiceSugar;
+		int countPortionSugar;
+		double usedSugar = 0.0;	
 		double byn = 0.0;
+		//int restCups = maxCups - usedCups;		
+		//int usedCups = 0;
 		
 		showStartMenu();
 		cout << "Your choice? ";
@@ -39,28 +47,64 @@ int main()
 		
 			if (coffeeChoice == 0) {
 				break;
-			}
-			/*else if (choice == 1)
+			}	   
+			else if (coffeeChoice == 1)
 			{
-				passwordVerification();
-			
-			}*/	   
-			else if (coffeeChoice == 2)
-			{
-				//
-				cout << "Pay the drink fee: " << priceE << " BYN" << endl;
+				offerSugar();
+				cout << "Your choice? " << endl;
+				cin >> choiceSugar;
+				if (choiceSugar == 1)
+				{
+					cout << "How many portions of sugar to add?" << endl;
+					cin >> countPortionSugar;
+					
+					usedSugar = countPortionSugar * portionSugarWeight;
+				}
+				totalSugar -= usedSugar;
+				//cout << "Rest of sugar " << totalSugar << endl;
+				system("cls");
+				cout << "Please, pay the drink fee: " << priceE << " BYN" << endl;
+				cout << endl;
 	    		byn += getMoney(priceE);
 	    		makeCoffee();
+	    		system("cls");
 			}
-	    	else if (coffeeChoice == 3)
+	    	else if (coffeeChoice == 2)
 			{
-				cout << "Pay the drink fee: " << priceC << " BYN" << endl;
+				offerSugar();
+				cout << "Your choice? " << endl;
+				cin >> choiceSugar;
+				if (choiceSugar == 1)
+				{
+					cout << "How many portions of sugar to add?" << endl;
+					cin >> countPortionSugar;
+					
+					usedSugar = countPortionSugar * portionSugarWeight;
+				}
+				totalSugar -= usedSugar;
+				system("cls");
+				cout << "Please, pay the drink fee: " << priceC << " BYN" << endl;
+				cout << endl;
 	    		byn += getMoney(priceC);
 	    		makeCoffee();
+	    		system("cls");
 			}
-			else if (coffeeChoice == 4)
+			else if (coffeeChoice == 3)
 			{
-				cout << "Pay the drink fee: " << priceL << " BYN" << endl;
+				offerSugar();
+				cout << "Your choice? " << endl;
+				cin >> choiceSugar;
+				if (choiceSugar == 1)
+				{
+					cout << "How many portions of sugar to add?" << endl;
+					cin >> countPortionSugar;
+					
+					usedSugar = countPortionSugar * portionSugarWeight;
+				}
+				totalSugar -= usedSugar;
+				system("cls");
+				cout << "Please, pay the drink fee: " << priceL << " BYN" << endl;
+				cout << endl;
 	    		byn += getMoney(priceL);
 	    		makeCoffee();
 	    		system("cls");
@@ -68,8 +112,9 @@ int main()
 			else {
 				cout << "Please, input [0...4]!" << endl;
 			}
+			
 			totalBYN += byn;	
-	    	cout << "Balance COFFEEbox " << totalBYN << " BYN" << endl;
+	    	
 		}
 		else if (startChoice == 2)
 		{
@@ -95,9 +140,11 @@ int main()
 
 void showStartMenu()
 {
-	cout << "*** COFFEEbox MENU ***" << endl;
+	cout << "*** CoffeeBOX MENU ***" << endl;
 	cout << endl;
-	cout << "1 - Choose type of coffee" << endl;
+	cout << "\t" << "Welcome!" << endl;
+	cout << endl;
+	cout << "1 - Choose coffee" << endl;
 	cout << "2 - Service menu" << endl;
 	cout << "0 - Exit" << endl;
 	cout << endl;
@@ -107,10 +154,9 @@ void showCoffeeMenu()
 {
 	cout << "*** COFFEEbox MENU ***" << endl;
 	cout << endl;
-	cout << "4 - Latte" << endl;
-	cout << "3 - Cappuccino" << endl;
-	cout << "2 - Espresso" << endl;
-	//cout << "1 - Service menu" << endl;
+	cout << "1 - Espresso     2.5 BYN" << endl;	
+	cout << "2 - Cappuccino   3.5 BYN" << endl;
+	cout << "3 - Latte        3.0 BYN" << endl;	
 	cout << "0 - Exit" << endl;
 	cout << endl;
 }
@@ -123,16 +169,18 @@ double getMoney(double price)
 	double restPrice = price;
 	while (sumCash < price)
 	{
+		cout << "Total: " << sumCash << " BYN" << endl;
+		cout << endl;
+		cout << "Attention! CoffeeBOX doesn't give change!!\n";
 		cout << "You can deposit: 50 penny, 1 BYN, 2 BYN" << endl;
-		cout << "!! WARNING: COFFEEbox doesn't give change!!\n";
 		cin >> cash;		
 		
 		rest = abs(restPrice - cash);
 		sumCash += cash;
-		restPrice = price - sumCash;		
-			
-		cout << "OK! " << cash << " BYN is received! You need do pay more " << rest << " BYN" << endl;		
-		cout << "Total " << sumCash << " BYN" << endl;
+		restPrice = price - sumCash;
+				
+		cout << endl;	
+		cout << "OK! " << cash << " BYN is received! You need to pay more " << rest << " BYN" << endl;			
 		cout << endl;
 	}
 	system("cls");	
@@ -158,10 +206,11 @@ void showServiceMenu()
 {
 	cout << "*** COFFEEbox SERVICE MENU ***" << endl;
 	cout << endl;
+	//cout << "TOTAL BALANCE: " << byn << " BYN";
+	cout << endl;
 	cout << "1 - Show total balance" << endl;
 	cout << "2 - Rest of the cups" << endl;
 	cout << "3 - Take off all money" << endl;
-	//cout << "1 - Service menu" << endl;
 	cout << "0 - Exit" << endl;
 	cout << endl;
 }
@@ -172,4 +221,12 @@ void makeCoffee()
 	cout << endl;
 	//sleep_for(milliseconds(3000));
 	cout << "Take your coffee! Bon appetit!" << endl;
+}
+
+void offerSugar()
+{
+	cout << "Do you want some sugar?" << endl;
+	cout << endl;
+	cout << "1 - Yes" << endl;
+	cout << "0 - No" << endl;		
 }

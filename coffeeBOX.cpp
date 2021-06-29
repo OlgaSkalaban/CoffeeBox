@@ -4,6 +4,7 @@
 using namespace std;
 
 #define PIN 1151;
+#define MAX_CAP 700;
 
 void showStartMenu();
 void showCoffeeMenu();
@@ -20,6 +21,7 @@ int restCups();
 void takeOffAllMoney();
 
 double totalBYN = 0.0; //����� ������ ������� � ����������
+int totalCups = 7;
 
 int main()
 {
@@ -29,7 +31,6 @@ int main()
 
 	double totalSugar = 1000.0;
 	int maxCups = 100;
-	int totalCups = maxCups;
 	int usedCups = 0;
 
 	int isBlockCoffeeBox = 0;
@@ -118,8 +119,7 @@ int main()
 		else if (startChoice == 2)
 		{
 			isBlockCoffeeBox = passwordVerification();
-			showServiceMenu();
-
+			serviceMenu();
 
 			cout << "Your choice? ";
 			cin >> serviceChoice;
@@ -271,11 +271,27 @@ void showBalance() {
                 if (choise == 0)
                         break;
         }
+
 }
 
 int restCups() {
-
-	return 0;
+	int addCups = 0;
+        int maxForCheck = MAX_CAP;
+        system("cls");
+        cout << "*** COFFEEbox SERVICE MENU ***" << endl;
+        cout << totalCups << " cups in a coffee machine" << endl;
+        cout << "Your choise: ";
+        cin >> addCups;
+        if (addCups < 0) {
+                return 1;
+        }
+        else if ((addCups + totalCups) > maxForCheck){
+                return 2;
+        }
+        else {
+                totalCups += addCups;
+                return 0;
+        }
 }
 
 void takeOffAllMoney() {

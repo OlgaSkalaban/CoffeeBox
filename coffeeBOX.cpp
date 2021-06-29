@@ -19,9 +19,10 @@ void showBalance();
 int restCups();
 void takeOffAllMoney();
 
+double totalBYN = 0.0; //����� ������ ������� � ����������
+
 int main()
 {
-	double totalBYN = 0.0; //����� ������ ������� � ����������
 	double priceE = 2.50;
 	double priceC = 3.50;
 	double priceL = 3.00;
@@ -258,8 +259,18 @@ void serviceMenu() {
 }
 
 void showBalance() {
+	int choise = 0;
 
-
+        while (true) {
+                system("cls");
+                cout << "*** COFFEEbox SERVICE MENU ***" << endl;
+                cout << totalBYN << " rubles in a coffee machine" << endl;
+                cout << "0 - Back to Service menu" << endl;
+                cout << "Your choise: ";
+                cin >> choise;
+                if (choise == 0)
+                        break;
+        }
 }
 
 int restCups() {

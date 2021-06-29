@@ -3,6 +3,8 @@
 
 using namespace std;
 
+#define PIN 1151;
+
 void showStartMenu();
 void showCoffeeMenu();
 void showServiceMenu();
@@ -23,6 +25,8 @@ int main()
 	int maxCups = 100;
 	int totalCups = maxCups;
 	int usedCups = 0;
+
+	int isBlockCoffeeBox = 0;
 
 	while (true) {
 		int startChoice;
@@ -107,8 +111,10 @@ int main()
 		}
 		else if (startChoice == 2)
 		{
-			passwordVerification();
+			isBlockCoffeeBox = passwordVerification();
 			showServiceMenu();
+
+
 			cout << "Your choice? ";
 			cin >> serviceChoice;
 
@@ -181,18 +187,27 @@ double getMoney(double price)
 	return sumCash;
 }
 
+
+//return 1 if you enter incorrect pin 3 times
 int passwordVerification()
 {
-	int pin = 1511;
+	int pin = PIN;
 	int userInput;
+	int counter = 0;
 
-	while (userInput != pin)
+	while (counter != 3)
 	{
 		cout << "Please, enter PIN: " << endl;
 		cin >> userInput;
-		if (userInput != pin)
+		if (userInput != pin) {
 			cout << "Invalid password! Please, try again!" << endl;
+			counter++;
+		}
+		else if (userInput == pin)
+			break;
 	}
+	if (counter == 3)
+		return 1;
 	system("cls");
 	return 0;
 }

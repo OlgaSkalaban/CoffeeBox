@@ -22,6 +22,7 @@ void takeOffAllMoney();
 
 double totalBYN = 0.0; //����� ������ ������� � ����������
 int totalCups = 7;
+double byn = 0.0;
 
 int main()
 {
@@ -40,7 +41,6 @@ int main()
 		int coffeeChoice;
 		int serviceChoice;
 		int choiceSugar;
-		double byn = 0.0;
 
 		showStartMenu();
 		cout << "Your choice? ";
@@ -121,14 +121,7 @@ int main()
 			isBlockCoffeeBox = passwordVerification();
 			serviceMenu();
 
-			cout << "Your choice? ";
-			cin >> serviceChoice;
 
-			system("cls");
-			if (serviceChoice == 1)
-			{
-				cout << "\t" << "TOTAL BALANCE is " << totalBYN << " BYN" << endl;
-			}
 		}
 		else if (startChoice == 0)
 		{
@@ -280,6 +273,7 @@ int restCups() {
         system("cls");
         cout << "*** COFFEEbox SERVICE MENU ***" << endl;
         cout << totalCups << " cups in a coffee machine" << endl;
+	cout << "0 - Back to Service menu" << endl;
         cout << "Your choise: ";
         cin >> addCups;
         if (addCups < 0) {
@@ -295,7 +289,19 @@ int restCups() {
 }
 
 void takeOffAllMoney() {
-
+	totalBYN = 0.0;
+        byn = 0.0;
+        int choise = 0;
+        while (true) {
+                system("cls");
+                cout << "*** COFFEEbox SERVICE MENU ***" << endl;
+                cout << "You take all money in a coffee machine. Total balance is " << totalBYN << endl;
+                cout << "0 - Back to Service menu" << endl;
+                cout << "Your choise: ";
+                cin >> choise;
+                if (choise == 0)
+                        break;
+        }
 }
 
 void makeCoffee()

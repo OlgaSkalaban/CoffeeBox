@@ -14,6 +14,11 @@ void makeCoffee();
 void offerSugar();
 int addSugars();
 
+void serviceMenu();
+void showBalance();
+int restCups();
+void takeOffAllMoney();
+
 int main()
 {
 	double totalBYN = 0.0; //����� ������ ������� � ����������
@@ -223,6 +228,47 @@ void showServiceMenu()
 	cout << "3 - Take off all money" << endl;
 	cout << "0 - Exit" << endl;
 	cout << endl;
+}
+
+void serviceMenu() {
+	int serviceChoise = 0;
+        int error = 0;
+
+        while(true) {
+                system("cls");
+                showServiceMenu();
+
+                cout << "Your choise: ";
+                cin >> serviceChoise;
+                if (serviceChoise == 1) {
+                        showBalance();
+                }
+                else if (serviceChoise == 2) {
+                        error = restCups();
+                }
+                else if (serviceChoise == 3) {
+                        takeOffAllMoney();
+                }
+                else if (serviceChoise == 0) {
+                        break;
+                }
+
+
+        }
+}
+
+void showBalance() {
+
+
+}
+
+int restCups() {
+
+	return 0;
+}
+
+void takeOffAllMoney() {
+
 }
 
 void makeCoffee()

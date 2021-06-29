@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -121,8 +122,12 @@ int main()
 		else if (startChoice == 2)
 		{
 			isBlockCoffeeBox = passwordVerification();
-			serviceMenu();
-
+			if (isBlockCoffeeBox == 0)
+				serviceMenu();
+			else {
+				showMassage("Your enter 3 times incorrect PIN. Coffe machine locked. Ask support service");
+				break;
+			}
 
 		}
 		else if (startChoice == 0)
@@ -203,14 +208,16 @@ int passwordVerification()
 		if (userInput != pin) {
 			cout << "Invalid password! Please, try again!" << endl;
 			counter++;
+			Sleep(1000);
 		}
 		else if (userInput == pin)
 			break;
+		system("cls");
 	}
 	if (counter == 3)
 		return 1;
-	system("cls");
-	return 0;
+	else
+		return 0;
 }
 
 void showServiceMenu()
@@ -266,7 +273,7 @@ void showMassage(string massage) {
 	int choise = -1;
 	system("cls");
 	cout << massage << endl;
-	cout << "0 - Back to Service menu" << endl;
+	cout << "0 - Back" << endl;
 	cout << "Your choise: ";
 	cin >> choise;
 }

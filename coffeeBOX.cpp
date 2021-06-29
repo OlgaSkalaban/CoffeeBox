@@ -10,6 +10,7 @@ int passwordVerification();
 double getMoney(double price);
 void makeCoffee();
 void offerSugar();
+int addSugars();
 
 int main()
 {
@@ -17,19 +18,18 @@ int main()
 	double priceE = 2.50;
 	double priceC = 3.50;
 	double priceL = 3.00;
-	double portionSugarWeight = 5.0;
+	
 	double totalSugar = 1000.0;
 	int maxCups = 100;
+	int totalCups = maxCups;
+	int usedCups = 0;
 	
 	while (true) {
 		int startChoice;
 		int coffeeChoice;
 		int serviceChoice;
-		int choiceSugar;
-		int countPortionSugar;
-		double usedSugar = 0.0;	
-		double byn = 0.0;		
-		int usedCups = 0;
+		int choiceSugar;		
+		double byn = 0.0;
 		
 		showStartMenu();
 		cout << "Your choice? ";
@@ -52,16 +52,17 @@ int main()
 				cout << "Your choice? " << endl;
 				cin >> choiceSugar;
 				system("cls");
+				
 				if (choiceSugar == 1)
 				{
-					cout << "How many portions of sugar to add?" << endl;
-					cin >> countPortionSugar;					
-					usedSugar = countPortionSugar * portionSugarWeight;
+					totalSugar -= addSugars();
 				}
-				totalSugar -= usedSugar;				
+								
 				system("cls");
 	    		byn += getMoney(priceE);
 	    		makeCoffee();
+	    		usedCups++;
+	    		totalCups -= usedCups;
 			}
 	    	else if (coffeeChoice == 2)
 			{
@@ -71,16 +72,14 @@ int main()
 				system("cls");
 				if (choiceSugar == 1)
 				{
-					cout << "How many portions of sugar to add?" << endl;
-					cin >> countPortionSugar;
-					
-					usedSugar = countPortionSugar * portionSugarWeight;
+					totalSugar -= addSugars();					
 				}
-				totalSugar -= usedSugar;
+				
 				system("cls");
 	    		byn += getMoney(priceC);
 	    		makeCoffee();
-	    		//system("cls");
+				usedCups++;
+	    		totalCups -= usedCups;
 			}
 			else if (coffeeChoice == 3)
 			{
@@ -90,19 +89,17 @@ int main()
 				system("cls");
 				if (choiceSugar == 1)
 				{
-					cout << "How many portions of sugar to add?" << endl;
-					cin >> countPortionSugar;
-					
-					usedSugar = countPortionSugar * portionSugarWeight;
+					totalSugar -= addSugars();
 				}
-				totalSugar -= usedSugar;
+				
 				system("cls");
 	    		byn += getMoney(priceL);
 	    		makeCoffee();
-	    		//system("cls");
+	    		usedCups++;
+	    		totalCups -= usedCups;
 			}
 			else {
-				cout << "Please, input [0...4]!" << endl;
+				cout << "Please, input [0...3]!" << endl;
 			}
 			
 			totalBYN += byn;	
@@ -116,6 +113,10 @@ int main()
 			cin >> serviceChoice;
 			
 			system("cls");
+			if (serviceChoice == 1)
+			{
+				cout << "\t" << "TOTAL BALANCE is " << totalBYN << " BYN" << endl;
+			}
 		}
 		else if (startChoice == 0)
 		{
@@ -132,7 +133,7 @@ int main()
 
 void showStartMenu()
 {
-	cout << "*** CoffeeBOX MENU ***" << endl;
+	cout << "   " << "*** CoffeeBOX MENU ***" << endl;
 	cout << endl;
 	cout << "\t" << "Welcome!" << endl;
 	cout << endl;
@@ -195,6 +196,7 @@ int passwordVerification()
 	system("cls");	
 	return 0;
 }
+
 void showServiceMenu()
 {
 	cout << "*** COFFEEbox SERVICE MENU ***" << endl;
@@ -211,14 +213,12 @@ void showServiceMenu()
 void makeCoffee()
 {
 	cout << "    " << "Your coffee is preparing..." << endl;
-	cout << "|||||||||||||||||||||||||||||||||||||" << endl;
+	cout << "|||||||||||||||||||||||||||||||||||" << endl;
 	cout << "       " << "Coffee is ready!" << endl;
 	cout << endl;
-	cout << "      " << "Thank you!" << endl;
-	cout << "   " << "Have a nice day!"<< endl;
+	cout << "          " << "Thank you!" << endl;
+	cout << "       " << "Have a nice day!"<< endl;
 	cout << endl;
-	usedCups++;
-	totalCups -= usedCups;
 }
 
 void offerSugar()
@@ -228,4 +228,17 @@ void offerSugar()
 	cout << "1 - Yes" << endl;
 	cout << "0 - No" << endl;		
 }
+
+int addSugars()
+{
+	int countPortionSugar;
+	double usedSugar = 0.0;
+	double portionSugarWeight = 5.0;	
+	
+	cout << "How many sugars to add?" << endl;
+	cin >> countPortionSugar;					
+	usedSugar = countPortionSugar * portionSugarWeight;
+	return usedSugar;
+}
+
 

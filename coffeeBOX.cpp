@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ void serviceMenu();
 void showBalance();
 int restCups();
 void takeOffAllMoney();
+void showMassage(string massage);
 
 double totalBYN = 0.0; //����� ������ ������� � ����������
 int totalCups = 7;
@@ -224,8 +226,12 @@ void showServiceMenu()
 	cout << endl;
 }
 
+/*error
+1 - You add cups less than 0
+2 - Sum totalCups and new cups more than 700
+*/
 void serviceMenu() {
-	int serviceChoise = 0;
+	int serviceChoise = -1;
         int error = 0;
 
         while(true) {
@@ -247,12 +253,26 @@ void serviceMenu() {
                         break;
                 }
 
-
+		if (error == 1) {
+			showMassage("You add cups less than 0");
+		}
+		else if (error == 2) {
+			showMassage("You add cups more than can contain coffee machine");
+		}
         }
 }
 
+void showMassage(string massage) {
+	int choise = -1;
+	system("cls");
+	cout << massage << endl;
+	cout << "0 - Back to Service menu" << endl;
+	cout << "Your choise: ";
+	cin >> choise;
+}
+
 void showBalance() {
-	int choise = 0;
+	int choise = -1;
 
         while (true) {
                 system("cls");

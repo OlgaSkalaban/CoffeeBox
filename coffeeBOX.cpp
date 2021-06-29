@@ -22,6 +22,7 @@ void showBalance();
 int restCups();
 void takeOffAllMoney();
 void showMassage(string massage);
+void progresBar();
 
 double totalBYN = 0.0; //����� ������ ������� � ����������
 int totalCups = 7;
@@ -334,6 +335,7 @@ void takeOffAllMoney() {
 void makeCoffee()
 {
 	cout << "    " << "Your coffee is preparing..." << endl;
+	progresBar();
 	cout << "|||||||||||||||||||||||||||||||||||" << endl;
 	cout << "       " << "Coffee is ready!" << endl;
 	cout << endl;
@@ -360,4 +362,13 @@ int addSugars()
 	cin >> countPortionSugar;
 	usedSugar = countPortionSugar * portionSugarWeight;
 	return usedSugar;
+}
+
+void progresBar() {
+        cout << "[";
+        for (int i = 0; i < 100; i++) {
+           Sleep(100);
+           cout << "*";
+        }
+        cout << "]";
 }

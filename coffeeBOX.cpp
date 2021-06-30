@@ -61,7 +61,7 @@ int main()
 		{
 			controlBalance(byn, priceC);
 			makeCoffee();
-			sumCash -= priceC;
+			byn -= priceC;
 			system("cls");
 			usedCups++;
 			totalCups -= usedCups;			
@@ -70,7 +70,7 @@ int main()
 		{
 			controlBalance(byn, priceL);
 			makeCoffee();
-			sumCash -= priceL;
+			byn -= priceL;
 			system("cls");
 			usedCups++;
 			totalCups -= usedCups;			

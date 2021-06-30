@@ -26,6 +26,7 @@ int restCups();
 void takeOffAllMoney();
 void showMessage(string message);
 void progressBar();
+void incorrectPointMenu();
 
 double totalBYN = 0.0;
 int totalCups = 7;
@@ -256,8 +257,7 @@ void serviceMenu() {
                         break;
                 }
 		else {
-			cout << "Incorrect value. Please choise point menu." << endl;
-			Sleep(1000);
+			incorrectPointMenu();
 		}
 
 		if (error == 1) {
@@ -267,6 +267,11 @@ void serviceMenu() {
 			showMessage("You add cups more than can contain coffee machine");
 		}
         }
+}
+
+void incorrectPointMenu(){
+	cout << "Incorrect value. Please choise point menu." << endl;
+	Sleep(1000);
 }
 
 void showMessage(string message) {
@@ -290,6 +295,9 @@ void showBalance() {
                 cin >> choise;
                 if (choise == 0)
                         break;
+		else {
+
+		}
         }
 
 }

@@ -27,7 +27,7 @@ void takeOffAllMoney();
 void showMessage(string message);
 void progressBar();
 
-double totalBYN = 0.0; 
+double totalBYN = 0.0;
 int totalCups = 7;
 double byn = 0.0;
 
@@ -36,16 +36,16 @@ int main()
 	int usedCups = 0;
 	int startChoice;
 	int isBlockCoffeeBox = 0;
-	
+
 	while (true) {
-		
+
 		int serviceChoice;
 
 		showStartMenu();
 		cout << "Your choice? ";
 		cin >> startChoice;
 		system("cls");
-		
+
 		if (startChoice == 1) {
 			getMoney();
 			system("cls");
@@ -57,7 +57,7 @@ int main()
 			byn -= priceE;
 			system("cls");
 			usedCups++;
-			totalCups -= usedCups;			
+			totalCups -= usedCups;
 		}
 		else if (startChoice == 3)
 		{
@@ -66,7 +66,7 @@ int main()
 			byn -= priceC;
 			system("cls");
 			usedCups++;
-			totalCups -= usedCups;			
+			totalCups -= usedCups;
 		}
 		else if (startChoice == 4)
 		{
@@ -75,7 +75,7 @@ int main()
 			byn -= priceL;
 			system("cls");
 			usedCups++;
-			totalCups -= usedCups;			
+			totalCups -= usedCups;
 		}
 		else if (startChoice == 5)
 		{
@@ -118,7 +118,7 @@ void showStartMenu()
 	cout << "3 - Cappuccino   " << priceC << " BYN" << endl;
 	cout << "4 - Latte        " << priceL << " BYN" << endl;
 	cout << endl;
-	
+
 	cout << "5 - Service" << endl;
 	cout << endl;
 	cout << "0 - Exit" << endl;
@@ -255,6 +255,10 @@ void serviceMenu() {
                 else if (serviceChoise == 0) {
                         break;
                 }
+		else {
+			cout << "Incorrect value. Please choise point menu." << endl;
+			Sleep(1000);
+		}
 
 		if (error == 1) {
 			showMessage("You add cups less than 0");

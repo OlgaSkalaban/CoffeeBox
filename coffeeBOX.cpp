@@ -137,10 +137,10 @@ int controlBalance(double byn, double price)
 
 void getMoney()
 {
-	int choice = -1;
+	int choice;
 
         while(true) {
-                system("cls");
+                //system("cls");
                 showChoiceMoneyMenu();
 
                 cout << "Your choice: ";

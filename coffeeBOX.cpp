@@ -88,7 +88,7 @@ int main()
 		}
 		else if (startChoice == 0)
 		{
-			sumCash = 0.0;
+			byn = 0.0;
 			break;
 		}
 		else

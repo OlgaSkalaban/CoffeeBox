@@ -254,18 +254,18 @@ void serviceMenu() {
                 }
 
 		if (error == 1) {
-			showMassage("You add cups less than 0");
+			showMessage("You add cups less than 0");
 		}
 		else if (error == 2) {
-			showMassage("You add cups more than can contain coffee machine");
+			showMessage("You add cups more than can contain coffee machine");
 		}
         }
 }
 
-void showMassage(string massage) {
+void showMessage(string message) {
 	int choise = -1;
 	system("cls");
-	cout << massage << endl;
+	cout << message << endl;
 	cout << "0 - Back" << endl;
 	cout << "Your choise: ";
 	cin >> choise;

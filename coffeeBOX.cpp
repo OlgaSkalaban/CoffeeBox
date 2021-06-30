@@ -133,27 +133,59 @@ int controlBalance(double byn, double price)
 
 void getMoney()
 {
-	double cash = 0.0;
-	
-	cout << "\t" << "\t" << "    " << "TOTAL: " << byn << " BYN" << endl;
-	cout << endl;
-	cout << "\t" << "\t" << "Please, deposit money" << endl;
-	cout << endl;
-	cout << "You can deposit: 10 penny, 20 penny, 50 penny, 1 BYN, 2 BYN" << endl;
-	cout << "\t" << "ATTENTION! CoffeeBOX doesn't give change!\n";		
-	cout << endl;
-	cout << "Your fee: ";
-	cin >> cash;
-	if (cash != 0)
-	{
-		byn += cash;
-		totalBYN += cash;
-	}		
-	else
-		cout << "Thanks!";
-	system("cls");
+	int choice = -1;
+
+        while(true) {
+                system("cls");
+                showChoiceMoneyMenu();
+
+                cout << "Your choice: ";
+                cin >> choice;
+
+                if (choice == 1) {
+                        totalBYN += 0.1;
+                        byn += 0.1;
+                }
+                else if (choice == 2) {
+                        totalBYN += 0.2;
+                        byn += 0.2;
+                }
+                else if (choice == 3) {
+                        totalBYN += 0.5;
+                        byn += 0.5;
+                }
+                else if (choice == 4) {
+                        totalBYN += 1.0;
+                        byn += 1.0;
+                }
+                else if (choice == 5) {
+                        totalBYN += 2.0;
+                        byn += 2.0;
+                }
+                else if (choice == 0) {
+                        break;
+                }
+                else
+                        ;
+        }
 }
 
+void showChoiceMoneyMenu() {
+        cout << "\t" << "** COFFEEbox deposit menu **" << endl;
+	cout << endl;
+        cout << "\t" << "\t" << "You balance is " << byn << " BYN" << endl;
+	cout << endl;
+	cout << "\t" << "ATTENTION! CoffeeBOX doesn't give change!\n";
+	cout << endl;
+	cout << "1 - Deposit 10 penny" << endl;
+        cout << "2 - Deposit 20 penny" << endl;
+        cout << "3 - Deposit 50 penny" << endl;
+        cout << "4 - Deposit 1 BYN" << endl;
+        cout << "5 - Deposit 2 BYN" << endl;
+	cout << endl;
+	cout << "0 - Exit" << endl;
+	cout << endl;
+}
 
 //return 1 if you enter incorrect pin 3 times
 int passwordVerification()

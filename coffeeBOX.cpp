@@ -47,7 +47,8 @@ int main()
 		system("cls");
 		
 		if (startChoice == 1) {
-			getMoney();			 
+			getMoney();
+			system("cls");
 		}
 		else if (startChoice == 2)
 		{
@@ -79,8 +80,10 @@ int main()
 		else if (startChoice == 5)
 		{
 			isBlockCoffeeBox = passwordVerification();
-			if (isBlockCoffeeBox == 0)
+			if (isBlockCoffeeBox == 0) {
 				serviceMenu();
+				system("cls");
+			}
 			else {
 				showMessage("Your enter 3 times incorrect PIN. Coffee machine locked. Ask support service");
 				break;

@@ -16,6 +16,7 @@ void showStartMenu();
 int controlBalance(double sumCash, double price);
 void showServiceMenu();
 int passwordVerification();
+void showChoiceMoneyMenu();
 void getMoney();
 void makeCoffee();
 

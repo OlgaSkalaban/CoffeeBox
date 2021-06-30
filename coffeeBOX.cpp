@@ -40,8 +40,6 @@ int main()
 
 	while (true) {
 
-		int serviceChoice;
-
 		showStartMenu();
 		cout << "Your choice? ";
 		cin >> startChoice;
@@ -141,7 +139,7 @@ void getMoney()
 	int choice;
 
         while(true) {
-                //system("cls");
+                system("cls");
                 showChoiceMoneyMenu();
 
                 cout << "Your choice: ";
@@ -170,8 +168,9 @@ void getMoney()
                 else if (choice == 0) {
                         break;
                 }
-                else
-                        ;
+                else {
+			incorrectPointMenu();
+		}
         }
 }
 
@@ -296,7 +295,7 @@ void showBalance() {
                 if (choise == 0)
                         break;
 		else {
-
+			incorrectPointMenu();
 		}
         }
 
@@ -309,7 +308,7 @@ int restCups() {
         cout << "*** COFFEEbox SERVICE MENU ***" << endl;
         cout << totalCups << " cups in a coffee machine" << endl;
 	cout << "0 - Back to Service menu" << endl;
-        cout << "Your choise: ";
+        cout << "Enter count cups which need add or 0 for exit: ";
         cin >> addCups;
         if (addCups < 0) {
                 return 1;
@@ -336,6 +335,9 @@ void takeOffAllMoney() {
                 cin >> choise;
                 if (choise == 0)
                         break;
+		else {
+			incorrectPointMenu();
+		}
         }
 }
 
@@ -349,6 +351,7 @@ void makeCoffee()
 	cout << "          " << "Thank you!" << endl;
 	cout << "       " << "Have a nice day!"<< endl;
 	cout << endl;
+	Sleep(4000);
 }
 
 void progressBar() {
@@ -357,5 +360,5 @@ void progressBar() {
            Sleep(100);
            cout << "*";
         }
-        cout << "]";
+        cout << "]" << endl;
 }

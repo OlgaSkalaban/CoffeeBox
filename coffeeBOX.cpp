@@ -29,12 +29,11 @@ void progressBar();
 void incorrectPointMenu();
 
 double totalBYN = 0.0;
-int totalCups = 0;
+int totalCups = 7;
 double byn = 0.0;
 
 int main()
 {
-	int usedCups = 0;
 	int startChoice;
 	int isBlockCoffeeBox = 0;
 

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define PIN 1151;
+#define PIN 7815;
 #define MAX_CAP 700;
 
 const double priceE = 2.70;

@@ -5,8 +5,8 @@
 
 using namespace std;
 
-#define PIN 7815;
-#define MAX_CAP 700;
+const int PIN = 7815;
+const int MAX_CAP = 700;
 
 const double priceE = 2.70;
 const double priceC = 3.20;
@@ -106,7 +106,7 @@ void showStartMenu()
 {
 	cout << "   " << "*** CoffeeBOX MENU ***" << endl;
 	cout << endl;
-	cout << "\t" << "Welcome!" << endl;
+	cout << "\t" << "EsspressoBiancci. Welcome!" << endl;
 	cout << endl;
 	cout << "Your BALANCE: " << byn << " BYN" << endl;
 	cout << "TOTAL BALANCE: " << totalBYN << " BYN" << endl;

@@ -18,7 +18,7 @@ void showServiceMenu();
 int passwordVerification();
 void showChoiceMoneyMenu();
 double getMoney();
-void makeCoffee();
+void makeCoffee(double cost);
 
 void serviceMenu();
 void showBalance();
@@ -29,7 +29,7 @@ void progressBar();
 void incorrectPointMenu();
 
 double totalBYN = 0.0;
-int totalCups = 7;
+int totalCups = 0;
 double byn = 0.0;
 
 int main()
@@ -51,30 +51,24 @@ int main()
 		}
 		else if (startChoice == 2)
 		{
+			if (totalCups == 0) {
+				showMessage("You can't order coffee. Cups is end");
+			}
 			controlBalance(byn, priceE);
-			makeCoffee();
-			byn -= priceE;
+			makeCoffee(priceE);
 			system("cls");
-			usedCups++;
-			totalCups -= usedCups;
 		}
 		else if (startChoice == 3)
 		{
 			controlBalance(byn, priceC);
-			makeCoffee();
-			byn -= priceC;
+			makeCoffee(priceC);
 			system("cls");
-			usedCups++;
-			totalCups -= usedCups;
 		}
 		else if (startChoice == 4)
 		{
 			controlBalance(byn, priceL);
-			makeCoffee();
-			byn -= priceL;
+			makeCoffee(priceL);
 			system("cls");
-			usedCups++;
-			totalCups -= usedCups;
 		}
 		else if (startChoice == 5)
 		{
@@ -109,7 +103,7 @@ void showStartMenu()
 	cout << "\t" << "EsspressoBiancci. Welcome!" << endl;
 	cout << endl;
 	cout << "Your BALANCE: " << byn << " BYN" << endl;
-	cout << "TOTAL BALANCE: " << totalBYN << " BYN" << endl;
+	//cout << "TOTAL BALANCE: " << totalBYN << " BYN" << endl;
 	cout << endl;
 	cout << "1 - Deposit money" << endl;
 	cout << endl;
@@ -138,7 +132,7 @@ int controlBalance(double byn, double price)
 double getMoney()
 {
 	int choice;
-    while(true) {        
+    while(true) {
         showChoiceMoneyMenu();
 
         cout << "Your choice: ";
@@ -349,17 +343,26 @@ void takeOffAllMoney() {
         }
 }
 
-void makeCoffee()
+void makeCoffee(double cost)
 {
-	cout << "    " << "Your coffee is preparing..." << endl;
-	progressBar();
-	cout << endl;
-	cout << "       " << "Coffee is ready!" << endl;
-	cout << endl;
-	cout << "          " << "Thank you!" << endl;
-	cout << "       " << "Have a nice day!"<< endl;
-	cout << endl;
-	Sleep(3000);
+	if (totalCups == 0) {
+                system("cls");
+                cout << "All cups end. You can't order coffee" << endl;
+        }
+        else {
+
+		byn -= cost;
+		totalCups --;
+		cout << "    " << "Your coffee is preparing..." << endl;
+		progressBar();
+		cout << endl;
+		cout << "       " << "Coffee is ready!" << endl;
+		cout << endl;
+		cout << "          " << "Thank you!" << endl;
+		cout << "       " << "Have a nice day!"<< endl;
+		cout << endl;
+		Sleep(3000);
+	}
 }
 
 void progressBar() {

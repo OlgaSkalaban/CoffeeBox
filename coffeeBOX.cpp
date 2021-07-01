@@ -13,11 +13,11 @@ const double priceC = 3.20;
 const double priceL = 3.00;
 
 void showStartMenu();
-int controlBalance(double sumCash, double price);
+int controlBalance(double byn, double price);
 void showServiceMenu();
 int passwordVerification();
 void showChoiceMoneyMenu();
-void getMoney();
+double getMoney();
 void makeCoffee();
 
 void serviceMenu();
@@ -129,63 +129,64 @@ int controlBalance(double byn, double price)
 	while (byn < price)
 	{
 		cout << "\t" << "Not enough funds to pay for coffee!" << endl;
-		getMoney();
+		byn = getMoney();
+		system("cls");
 	}
 	return 0;
 }
 
-void getMoney()
+double getMoney()
 {
 	int choice;
+    while(true) {        
+        showChoiceMoneyMenu();
 
-        while(true) {
-                system("cls");
-                showChoiceMoneyMenu();
+        cout << "Your choice: ";
+        cin >> choice;
 
-                cout << "Your choice: ";
-                cin >> choice;
-
-                if (choice == 1) {
-                        totalBYN += 0.1;
-                        byn += 0.1;
-                }
-                else if (choice == 2) {
-                        totalBYN += 0.2;
-                        byn += 0.2;
-                }
-                else if (choice == 3) {
-                        totalBYN += 0.5;
-                        byn += 0.5;
-                }
-                else if (choice == 4) {
-                        totalBYN += 1.0;
-                        byn += 1.0;
-                }
-                else if (choice == 5) {
-                        totalBYN += 2.0;
-                        byn += 2.0;
-                }
-                else if (choice == 0) {
-                        break;
-                }
-                else {
+        if (choice == 1) {
+            totalBYN += 0.1;
+            byn += 0.1;
+        }
+        else if (choice == 2) {
+            totalBYN += 0.2;
+            byn += 0.2;
+        }
+        else if (choice == 3) {
+            totalBYN += 0.5;
+            byn += 0.5;
+        }
+        else if (choice == 4) {
+            totalBYN += 1.0;
+            byn += 1.0;
+        }
+        else if (choice == 5) {
+            totalBYN += 2.0;
+            byn += 2.0;
+        }
+        else if (choice == 0) {
+            break;
+        }
+        else {
 			incorrectPointMenu();
 		}
-        }
+		system("cls");
+    }
+    return byn;
 }
 
 void showChoiceMoneyMenu() {
-        cout << "\t" << "** COFFEEbox deposit menu **" << endl;
+    cout << "\t" << "** COFFEEbox deposit menu **" << endl;
 	cout << endl;
-        cout << "\t" << "\t" << "You balance is " << byn << " BYN" << endl;
+    cout << "\t" << "\t" << "Your balance is " << byn << " BYN" << endl;
 	cout << endl;
 	cout << "\t" << "ATTENTION! CoffeeBOX doesn't give change!\n";
 	cout << endl;
 	cout << "1 - Deposit 10 penny" << endl;
-        cout << "2 - Deposit 20 penny" << endl;
-        cout << "3 - Deposit 50 penny" << endl;
-        cout << "4 - Deposit 1 BYN" << endl;
-        cout << "5 - Deposit 2 BYN" << endl;
+    cout << "2 - Deposit 20 penny" << endl;
+    cout << "3 - Deposit 50 penny" << endl;
+    cout << "4 - Deposit 1 BYN" << endl;
+    cout << "5 - Deposit 2 BYN" << endl;
 	cout << endl;
 	cout << "0 - Exit" << endl;
 	cout << endl;
@@ -288,8 +289,10 @@ void showBalance() {
         while (true) {
                 system("cls");
                 cout << "*** COFFEEbox SERVICE MENU ***" << endl;
+                cout << endl;
                 cout << totalBYN << " rubles in a coffee machine" << endl;
                 cout << "0 - Back to Service menu" << endl;
+                cout << endl;
                 cout << "Your choise: ";
                 cin >> choise;
                 if (choise == 0)
@@ -306,8 +309,10 @@ int restCups() {
         int maxForCheck = MAX_CAP;
         system("cls");
         cout << "*** COFFEEbox SERVICE MENU ***" << endl;
+        cout << endl;
         cout << totalCups << " cups in a coffee machine" << endl;
-	cout << "0 - Back to Service menu" << endl;
+		cout << "0 - Back to Service menu" << endl;
+		cout << endl;
         cout << "Enter count cups which need add or 0 for exit: ";
         cin >> addCups;
         if (addCups < 0) {
@@ -328,9 +333,12 @@ void takeOffAllMoney() {
         int choise = 0;
         while (true) {
                 system("cls");
-                cout << "*** COFFEEbox SERVICE MENU ***" << endl;
+                cout << "    " << "*** COFFEEbox SERVICE MENU ***" << endl;
+                cout << endl;
                 cout << "You take all money in a coffee machine. Total balance is " << totalBYN << endl;
+                cout << endl;
                 cout << "0 - Back to Service menu" << endl;
+                cout << endl;
                 cout << "Your choise: ";
                 cin >> choise;
                 if (choise == 0)
@@ -351,7 +359,7 @@ void makeCoffee()
 	cout << "          " << "Thank you!" << endl;
 	cout << "       " << "Have a nice day!"<< endl;
 	cout << endl;
-	Sleep(4000);
+	Sleep(3000);
 }
 
 void progressBar() {
